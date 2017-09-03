@@ -1,0 +1,26 @@
+nav {
+    background-color: white !important;
+    color: black;
+    padding-bottom: 10px;
+    height: 85px;
+}
+
+a {
+    color: black !important;
+    padding-top: 15px;
+    padding-right: 15px;
+    size: 10px;
+}
+
+.Right {
+    float: right;
+}
+
+i {
+    color: #f4a460 !important;
+}
+
+.brand-logo.center {
+    font-size: 50px !important;
+    padding: 10px;
+}

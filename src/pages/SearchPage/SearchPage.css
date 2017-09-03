@@ -1,0 +1,11 @@
+input {
+    width: 40% !important;
+}
+
+.SearchPage {
+    padding: 30px;
+}
+
+.Search-Icon {
+    padding: 10px 10px;
+}
