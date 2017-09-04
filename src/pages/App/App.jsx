@@ -20,7 +20,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: null
+      recipes: null,
+      search: ""
     }
   }
 
@@ -37,23 +38,36 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
-  handleSearch = () => {
-    fetch('/api/recipes', {
-      method: 'GET',
-      headers: {'Content-Type': 'application/json'}
-    }).then(res => JSON.stringify(res))
-    .then(data => console.log('response is, ', data))
+  handleUpdate = () => {
+    this.setState({user: userService.getUser()});
   }
 
+  updateSearchValue = (e) => {
+    this.setState({search: e.target.value});
+  }
+
+  updateMessage = (msg) => {
+    this.setState({message: msg});
+  }
+
+  handleSearch = (search) => {
+    fetch(`/api/recipes`, {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+    }).then(res => res.json())
+    .then(data => this.setState({recipes: data}))
+  }
+  
   /*---------- Lifecycle Methods ----------*/
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
 
-    this.handleSearch();
+    this.handleSearch(this.state.search);
   }
-
+  
   render() {
+    console.log('recipes', this.state.recipes)
     return (
       <div className="App">
         <Router>
@@ -63,12 +77,26 @@ class App extends Component {
               handleLogout={this.handleLogout}
             />
             <Switch>
+              <Route exact path='/search' render={(props) => 
+                <SearchPage 
+                user={this.state.user}
+                recipes={this.state.recipes}
+                updateSearchValue={this.updateSearchValue}
+                />
+              }/>
               <Route exact path='/signup' render={(props) => 
                   <SignupPage 
                     {...props}
                     handleSignup={this.handleSignup}
                   />
                 }/>
+                <Route exact path='/settings' render={(props) => 
+              <SettingsPage
+                  {...props}
+                  user={this.state.user}
+                  handleUpdate={this.handleUpdate}
+                />
+              }/>
               <Route exact path='/login' render={(props) => 
                 <LoginPage
                   {...props}
@@ -78,11 +106,7 @@ class App extends Component {
               <Route exact path='/' render={(props) => 
                 <HomePage 
                 user={this.state.user}
-                />
-              }/>
-              <Route exact path='/search' render={(props) => 
-                <SearchPage 
-                user={this.state.user}
+                
                 />
               }/>
               <Route exact path='/favorites' render={(props) => 
@@ -90,12 +114,6 @@ class App extends Component {
                 user={this.state.user}
                 />
               }/>
-              <Route exact path='/settings' render={(props) => 
-                <SettingsPage
-                user={this.state.user}
-                />
-              }/>
-
             </Switch>
           </div>
         </Router>

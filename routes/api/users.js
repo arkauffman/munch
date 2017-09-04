@@ -6,6 +6,7 @@ var usersCtrl = require('../../controllers/users');
 /*---------- Public Routes ----------*/
 router.post('/signup', usersCtrl.signup);
 router.post('/login', usersCtrl.login);
+router.put('/settings', usersCtrl.update);
 
 // use in order to access other routes - like show, your favorite meals, etc.
 /*---------- Helper Functions ----------*/

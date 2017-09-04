@@ -13,6 +13,7 @@ const NavBar = (props) => {
                 <Link to='/favorites' className='Right'><Icon tiny>favorite_border</Icon></Link>
                 <Link to='/search' className='Right'><Icon>search</Icon></Link>
             </nav>
+            <p className="Welcome">Welcome, {props.user.name}! </p>
         </div>
     :
         <div>

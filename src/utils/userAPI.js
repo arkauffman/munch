@@ -26,7 +26,21 @@ function login(user) {
   .then(({token}) => token);
 }
 
+function update(user) {
+  return fetch(BASE_URL + 'settings', {
+    method: 'PUT',
+    headers: new Headers({'Content-Type': 'application/json'}),
+    body: JSON.stringify(user)
+  })
+  .then(res => {
+    if (res.ok) return res.json();
+    throw new Error('Bad credentials');
+  })
+  .then(({token}) => token);
+}
+
 export default {
   signup,
-  login
+  login,
+  update
 };

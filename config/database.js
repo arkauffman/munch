@@ -1,15 +1,17 @@
 var mongoose = require('mongoose');
-mongoose.Promise = Promise;
+mongoose.Promise = global.Promise;
 require('dotenv').config();
 mongoose.connect(process.env.DATABASE_URL);
 
-mongoose.connection.once('open', () => {
-    console.log(`Mongoose connected to ${process.env.DATABASE_URL}`);
+var db = mongoose.connection;
+
+db.once('open', () => {
+    console.log(`Mongoose connected to ${db.name}`);
 });
 
-mongoose.connection.once('error', (err) => {
-    console.log(`database error:\n${err}`)
-});
+// mongoose.connection.once('error', (err) => {
+//     console.log(`database error:\n${err}`)
+// });
 
 module.exports = mongoose;
 

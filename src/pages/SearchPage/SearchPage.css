@@ -9,3 +9,17 @@ input {
 .Search-Icon {
     padding: 10px 10px;
 }
+
+.favorite {
+    color: red !important;
+}
+
+.search-image {
+    width: 200px;
+    height: 150px;
+    padding: 10px;
+}
+
+input {
+    text-align: center;
+}

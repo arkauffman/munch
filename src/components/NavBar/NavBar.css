@@ -24,3 +24,8 @@ i {
     font-size: 50px !important;
     padding: 10px;
 }
+
+.Welcome {
+    float: left;
+    padding: 20px;
+}

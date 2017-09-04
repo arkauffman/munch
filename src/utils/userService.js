@@ -11,6 +11,11 @@ function login(user) {
     .then(token => tokenService.setToken(token));
 }
 
+function update(user) {
+  return userAPI.update(user)
+  .then(token => tokenService.setToken(token));
+}
+
 function logout() {
   tokenService.removeToken();
 }
@@ -22,6 +27,7 @@ function getUser() {
 export default {
   signup,
   getUser,
+  update,
   login,
   logout
 }

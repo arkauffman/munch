@@ -6,19 +6,15 @@ import './HomePage.css';
 const HomePage = (props) => {
     let home = props.user ? 
         <div>
-            <div className="Welcome-Page">
-                <span>Welcome, {props.user.name}!</span>
-            </div>
-
             <div className="container">
             <div className="row">
-                <div class="col s12">
-                <Collection header='Groceries'>
-                    <CollectionItem>Alvin</CollectionItem>
-                    <CollectionItem>Alvin</CollectionItem>
-                    <CollectionItem>Alvin</CollectionItem>
-                    <CollectionItem>Alvin</CollectionItem>
-                </Collection>
+                <div className="col s12">
+                    <Collection header='Groceries'>
+                        <CollectionItem>Alvin</CollectionItem>
+                        <CollectionItem>Alvin</CollectionItem>
+                        <CollectionItem>Alvin</CollectionItem>
+                        <CollectionItem>Alvin</CollectionItem>
+                    </Collection>
                 </div>
             </div>
             </div>

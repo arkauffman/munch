@@ -1,18 +1,40 @@
 var request = require('request');
-const URL = 'http://api.yummly.com/v1';
+const URL = `http://api.yummly.com/v1/api/recipes?_app_id=${process.env.X_Yummly_App_ID}&_app_key=${process.env.X_Yummly_App_Key}&q=`
 
 function getRecipes(req, res) {
-    console.log('hitting!!!');
-    let request = {
-        url: `${URL}_app_id=${process.env.X-YUMMPY-APP-ID}&_app_key=${X-YUMMLY-APP-KEY}`
-    }
-    request(request.url, (err, response, body) => {
+    request(URL, (err, response, body) => {
         if (err) return console.log(err);
-        let recipes = JSON.parse(body);
-        console.log('RECIPES!!!', recipes);
+        // console.log('body ', body)
+        let recipes = body;
         res.send(recipes);
     });
-  }
+    
+    // if (req.params.keyword === "") {
+    //     request(`${URL}${req.params.keyword}`, (err, response, body) => {
+    //         if (err) return console.log(err);
+    //         console.log('body ', body)
+    //         let recipes = body;
+    //         res.send(recipes);
+    //     });
+    // } 
+    
+    // else {
+    //     console.log('hitting w KEYWORD!!!');
+    //     request(URL + req.params.keyword, (err, response, body) => {
+    //         if (err) return console.log(err);
+    //         console.log('body ', body)
+    //         let recipes = body;
+    //         res.send(recipes);
+    //     });
+
+    // }
+    // request(URL, (err, response, body) => {
+    //     if (err) return console.log(err);
+    //     console.log('body ', body)
+    //     let recipes = body;
+    //     res.send(recipes);
+    // });
+}
 
 module.exports = {
     getRecipes

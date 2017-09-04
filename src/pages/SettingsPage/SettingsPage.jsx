@@ -1,32 +1,23 @@
-import React from 'react';
-// import {Link} from 'react-router-dom';
+import React, {Component} from 'react';
+import SettingsForm from '../../components/SettingsForm/SettingsForm';
 import './SettingsPage.css';
 
-const SettingsPage = (props) => {
-    let settings = props.user ? 
-        <div className="SearchPage">
-            <div className="row">
-                <form class="col s12">
-                    
-                    <div class="row">
-                        <div class="input-field col s6 offset-s6">
-                            <input type="search" placeholder="Search Recipes..." />
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-        :
-        <div>
-            <span>Sign in</span>
-        </div>
+class SettingsPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {message: ''}
+        }
     
-    return (
-        <div className='NavBar'>
-            {settings}
-        </div>
-    );
+    render() {
+        return (
+            <div className="SettingsPage">
+                <SettingsForm
+                    {...this.props}
+                    handleUpdate={this.props.handleUpdate}
+                    updateMessage={this.updateMessage}
+                />
+            </div>
+        );
+    }
 };
-
 export default SettingsPage;

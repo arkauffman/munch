@@ -6,13 +6,10 @@ import './FavoritesPage.css';
 const FavoritesPage = (props) => {
     let favorites = props.user ? 
         <div>
-            <div className="Favorites-Page">
-                <span>Welcome, {props.user.name}!</span>
-            </div>
 
             <div className="container">
                 <div className="row">
-                    <div class="col s12">
+                    <div className="col s12">
                         <Collection header='Favorites'>
                             <CollectionItem>Alvin</CollectionItem>
                             <CollectionItem>Alvin</CollectionItem>
