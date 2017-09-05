@@ -6,8 +6,6 @@ var bodyParser = require('body-parser');
 
 require('dotenv').config();
 
-const foodAPI = process.env.FOOD_TO_FORK_KEY;
-
 require('./config/database');
 
 var app = express();
@@ -20,8 +18,8 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(bodyParser.json());
-
 app.use(require('./config/auth'));
+
 
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));

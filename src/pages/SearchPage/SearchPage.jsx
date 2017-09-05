@@ -1,28 +1,27 @@
 import React from 'react';
-// import {Link} from 'react-router-dom';
-import {Button, Icon, Collection, CollectionItem} from 'react-materialize';
+import {Link} from 'react-router-dom';
+import {Icon, Collection, CollectionItem} from 'react-materialize';
 import './SearchPage.css';
 
-const SearchPage = ({updateSearchValue, recipes}) => {
-    console.log('recipessss', recipes)
+const SearchPage = ({handleSearch, updateSearchValue, recipes}) => {
     if (recipes !== null) {
         return (
             recipes ? 
             <div className="container">
                 <Collection header='Recipes'>
-                <input type="search" placeholder="Search Recipes..." onChange={updateSearchValue}/>
+                
+                <form onSubmit={(e) => handleSearch(e)}>
+                    <input type="search" placeholder="Search Recipes..." onChange={updateSearchValue} />
+                </form>
 
                 {recipes.matches.map((recipe, index) => {
-                    let title = recipe.id.split('-');
-                    title.splice(title.length - 1, 1);
-                    let updatedTitle = title.join(' ');
-                    
+                
                     let ingredients = recipe.ingredients;
                     let updatedIngredients = ingredients.join(', ')
-                    let rating = recipe.rating;
-
+                    
+                    {/* let rating = recipe.rating;
                     let ratingArr = new Array(recipe.rating);
-                    ratingArr.fill(1);
+                    ratingArr.fill(1); */}
                     {/* console.log(ratingArr) */}
 
                     return (
@@ -30,12 +29,14 @@ const SearchPage = ({updateSearchValue, recipes}) => {
                                 <hr />
                                 <br />
                                 <CollectionItem>
-                                    <img src={recipe.imageUrlsBySize[90]} className="search-image" /> <br />
-                                    {updatedTitle} <br />
+                                    <Link to={`/search/${recipe.id}`}>
+                                        <img src={recipe.imageUrlsBySize[90]} className="search-image" /><br />
+                                    </Link>
+                                    {recipe.recipeName} <br />
                                     {updatedIngredients} <br /><br />
                                     {recipe.rating} stars
                                     <br /> <br />
-                                    <Icon tiny className="favorite">favorite_border</Icon>
+                                    <Link to={`/favorites/${recipe.id}`}><Icon tiny className="favorite">favorite_border</Icon></Link>
                                 </CollectionItem> 
                         </div>
                     )
@@ -43,19 +44,17 @@ const SearchPage = ({updateSearchValue, recipes}) => {
                 </Collection>   
             </div>
             :
-            <div>
+            <div className="container">
                 <p>Loading!</p>
             </div>
         )
     } else {
         return (
-            <div>
+            <div className="container">
                 <p>Loading!</p>
             </div>
         )
     }
-
-
 };
 
 export default SearchPage;

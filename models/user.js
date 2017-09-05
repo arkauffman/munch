@@ -3,6 +3,12 @@ var bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
+var grocerySchema = new mongoose.Schema({
+    groceryItem: String
+}, {
+    timestamps: true
+});
+
 var userSchema = new mongoose.Schema({
     name: String,
     email: {
@@ -11,7 +17,8 @@ var userSchema = new mongoose.Schema({
         lowercase: true,
         unique: true
     },
-    password: String
+    password: String,
+    groceries: [grocerySchema]
 }, {
     timestamps: true
 });

@@ -4,10 +4,13 @@ import userService from '../../utils/userService';
 class SettingsForm extends Component {
     constructor(props) {
         super(props);
+        var user = userService.getUser();
         this.state = {
-            name: userService.getUser().name,
-            email: userService.getUser().email
-        }
+            name: user.name,
+            email: user.email,
+            password: '',
+            passwordConf: ''
+        };
     }
 
     handleSubmit = (e) => {
@@ -26,6 +29,10 @@ class SettingsForm extends Component {
         });
     }
 
+//     isFormInvalid() {
+//     return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+//   }
+
     render() {
         console.log('user', userService.getUser())
         let settings = userService.getUser() ? 
@@ -41,17 +48,17 @@ class SettingsForm extends Component {
                             </div>
                             <div className="row">
                             <div className="col s12">
-                                <input type="email" className="form-control" placeholder="Email" value={userService.getUser().email} onChange={(e) => this.handleChange('email', e)} />
+                                <input type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={(e) => this.handleChange('email', e)} />
                             </div>
                             </div>
                             <div className="row">
                             <div className="col s12">
-                                <input type="password" className="form-control" placeholder="Password" onChange={(e) => this.handleChange('password', e)} />
+                                <input type="password" className="form-control" placeholder="Password" value={this.state.password} onChange={(e) => this.handleChange('password', e)} />
                             </div>
                             </div>
                             <div className="row">
                             <div className="col s12">
-                                <input type="password" className="form-control" placeholder="Confirm Password" onChange={(e) => this.handleChange('passwordConf', e)} />
+                                <input type="password" className="form-control" placeholder="Confirm Password" value={this.state.passwordConf} onChange={(e) => this.handleChange('passwordConf', e)} />
                             </div>
                             </div>
                             <div className="row">

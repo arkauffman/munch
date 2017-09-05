@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom';
 import './App.css';
 import NavBar from '../../components/NavBar/NavBar';
@@ -15,6 +14,7 @@ import HomePage from '../HomePage/HomePage';
 import SearchPage from '../SearchPage/SearchPage';
 import FavoritesPage from '../FavoritesPage/FavoritesPage';
 import SettingsPage from '../SettingsPage/SettingsPage';
+import ShowPage from '../ShowPage/ShowPage';
 
 class App extends Component {
   constructor(props) {
@@ -50,8 +50,9 @@ class App extends Component {
     this.setState({message: msg});
   }
 
-  handleSearch = (search) => {
-    fetch(`/api/recipes`, {
+  handleSearch = (e) => {
+    if (e) e.preventDefault();
+    fetch(`/api/recipes?food=${this.state.search}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
     }).then(res => res.json())
@@ -62,12 +63,11 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
-
-    this.handleSearch(this.state.search);
+    this.handleSearch();
   }
   
   render() {
-    console.log('recipes', this.state.recipes)
+    console.log('recipes: ', this.state.recipes)
     return (
       <div className="App">
         <Router>
@@ -79,9 +79,16 @@ class App extends Component {
             <Switch>
               <Route exact path='/search' render={(props) => 
                 <SearchPage 
-                user={this.state.user}
-                recipes={this.state.recipes}
-                updateSearchValue={this.updateSearchValue}
+                  user={this.state.user}
+                  recipes={this.state.recipes}
+                  updateSearchValue={this.updateSearchValue}
+                  handleSearch={this.handleSearch}
+                />
+              }/>
+              <Route exact path='/favorites/:id' render={(props) => 
+                <FavoritesPage
+                  user={this.state.user}
+                  recipes={this.state.recipes}
                 />
               }/>
               <Route exact path='/signup' render={(props) => 
@@ -105,13 +112,15 @@ class App extends Component {
               }/>
               <Route exact path='/' render={(props) => 
                 <HomePage 
-                user={this.state.user}
-                
+                  user={this.state.user}
+                  recipes={this.state.recipes}
                 />
               }/>
-              <Route exact path='/favorites' render={(props) => 
-                <FavoritesPage
-                user={this.state.user}
+              <Route path='/search/:id' render={(props) => 
+                <ShowPage
+                  user={this.state.user}
+                  props={props}
+                  recipes={this.state.recipes}
                 />
               }/>
             </Switch>

@@ -3,8 +3,14 @@ import React from 'react';
 import {Collection, CollectionItem} from 'react-materialize';
 import './FavoritesPage.css';
 
-const FavoritesPage = (props) => {
-    let favorites = props.user ? 
+const FavoritesPage = ({props, recipes}) => {
+    if (recipes !== null) {
+        var currentRecipe = recipes.matches.find((recipe) => {
+            return props.match.params.id === recipe.id;
+        });
+    }
+
+    currentRecipe ? 
         <div>
 
             <div className="container">
@@ -27,7 +33,7 @@ const FavoritesPage = (props) => {
     
     return (
         <div className='HomePage'>
-            {favorites}
+            {currentRecipe}
         </div>
     );
 };
