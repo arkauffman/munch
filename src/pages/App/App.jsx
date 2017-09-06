@@ -13,7 +13,6 @@ import userService from '../../utils/userService';
 import tokenService from '../../utils/tokenService';
 import HomePage from '../HomePage/HomePage';
 import SearchPage from '../SearchPage/SearchPage';
-import FavoritesPage from '../FavoritesPage/FavoritesPage';
 import SettingsPage from '../SettingsPage/SettingsPage';
 import ShowPage from '../ShowPage/ShowPage';
 
@@ -75,9 +74,16 @@ class App extends Component {
     // Use recipeId to make get request to correct route
     if (recipeId) {
       fetch(`/api/recipes/like/${recipeId}`, options)
-      .then(res => res.json())
-      .then(data => console.log(data))
+        .then(res => res.json())
+        .then(data => this.setState({user: data}))
     }
+  }
+
+  handleUserPopulate = () => {
+    let options = this.getAuthRequestOptions('GET');
+    fetch('/api/recipes/user', options)
+    .then(res => res.json())
+    .then(data => this.setState({user: data}))
   }
   
   /*---------- Lifecycle Methods ----------*/
@@ -85,11 +91,15 @@ class App extends Component {
     let user = userService.getUser();
     this.setState({user});
     this.handleSearch();
+    this.handleFavorites();
+    this.handleUserPopulate();
   }
   
   render() {
     console.log('recipes: ', this.state.recipes)
     console.log('favorites: ', this.state.favorites)
+    console.log('user', this.state.user);
+    
     return (
       <div className="App">
         <Router>
@@ -105,13 +115,6 @@ class App extends Component {
                   recipes={this.state.recipes}
                   updateSearchValue={this.updateSearchValue}
                   handleSearch={this.handleSearch}
-                  handleFavorites={this.handleFavorites}
-                />
-              }/>
-              <Route exact path='/favorites/:id' render={(props) => 
-                <FavoritesPage
-                  user={this.state.user}
-                  recipes={this.state.recipes}
                   handleFavorites={this.handleFavorites}
                 />
               }/>
@@ -137,7 +140,7 @@ class App extends Component {
               <Route exact path='/' render={(props) => 
                 <HomePage 
                   user={this.state.user}
-                  recipes={this.state.recipes}
+                  handleFavorites={this.handleFavorites}
                 />
               }/>
               <Route path='/search/:id' render={(props) => 

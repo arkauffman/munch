@@ -16,6 +16,12 @@ a {
     float: right;
 }
 
+.Left {
+    float: left;
+    font-size: 40px;
+    padding-left: 15px;
+}
+
 i {
     color: #f4a460 !important;
 }

@@ -3,7 +3,6 @@ var jwt = require('jsonwebtoken');
 var SECRET = process.env.SECRET;
 
 function signup(req, res) {
-    console.log('Signup')
     var user = new User(req.body);
     user.save()
       .then(user => {
