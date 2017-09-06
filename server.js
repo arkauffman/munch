@@ -24,6 +24,7 @@ app.use(require('./config/auth'));
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api', require('./routes/api/api'));
+app.use('/api/recipes', require('./routes/api/recipes'));
 // app.use('/api/topscores', require('./routes/api/topscores'));
 
 // The following "catch all" route is necessary for

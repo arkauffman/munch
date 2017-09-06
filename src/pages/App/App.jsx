@@ -10,6 +10,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
+import tokenService from '../../utils/tokenService';
 import HomePage from '../HomePage/HomePage';
 import SearchPage from '../SearchPage/SearchPage';
 import FavoritesPage from '../FavoritesPage/FavoritesPage';
@@ -21,7 +22,8 @@ class App extends Component {
     super(props);
     this.state = {
       recipes: null,
-      search: ""
+      search: "",
+      favorites: null
     }
   }
 
@@ -58,6 +60,25 @@ class App extends Component {
     }).then(res => res.json())
     .then(data => this.setState({recipes: data}))
   }
+
+  getAuthRequestOptions = (method) => {
+    return {
+      method: method,
+      headers: new Headers({'Authorization': 'Bearer ' + tokenService.getToken()})
+    };
+  }
+
+  handleFavorites = (recipeId, recipeName, recipeIngredients) => {
+    let options = this.getAuthRequestOptions('POST');
+    options.headers.append('Content-Type', 'application/json');
+    options.body = JSON.stringify({recipeId, recipeName, recipeIngredients});
+    // Use recipeId to make get request to correct route
+    if (recipeId) {
+      fetch(`/api/recipes/like/${recipeId}`, options)
+      .then(res => res.json())
+      .then(data => console.log(data))
+    }
+  }
   
   /*---------- Lifecycle Methods ----------*/
   componentDidMount() {
@@ -68,6 +89,7 @@ class App extends Component {
   
   render() {
     console.log('recipes: ', this.state.recipes)
+    console.log('favorites: ', this.state.favorites)
     return (
       <div className="App">
         <Router>
@@ -83,12 +105,14 @@ class App extends Component {
                   recipes={this.state.recipes}
                   updateSearchValue={this.updateSearchValue}
                   handleSearch={this.handleSearch}
+                  handleFavorites={this.handleFavorites}
                 />
               }/>
               <Route exact path='/favorites/:id' render={(props) => 
                 <FavoritesPage
                   user={this.state.user}
                   recipes={this.state.recipes}
+                  handleFavorites={this.handleFavorites}
                 />
               }/>
               <Route exact path='/signup' render={(props) => 

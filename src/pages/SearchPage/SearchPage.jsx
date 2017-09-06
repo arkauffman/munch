@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Icon, Collection, CollectionItem} from 'react-materialize';
 import './SearchPage.css';
 
-const SearchPage = ({handleSearch, updateSearchValue, recipes}) => {
+const SearchPage = ({handleFavorites, handleSearch, updateSearchValue, recipes}) => {
     if (recipes !== null) {
         return (
             recipes ? 
@@ -36,7 +36,11 @@ const SearchPage = ({handleSearch, updateSearchValue, recipes}) => {
                                     {updatedIngredients} <br /><br />
                                     {recipe.rating} stars
                                     <br /> <br />
-                                    <Link to={`/favorites/${recipe.id}`}><Icon tiny className="favorite">favorite_border</Icon></Link>
+                                    
+                                    <button onClick={() => handleFavorites(recipe.id, recipe.recipeName, recipe.ingredients)}>
+                                        <Icon tiny className="favorite">favorite_border</Icon>
+                                    </button>
+                                        
                                 </CollectionItem> 
                         </div>
                     )

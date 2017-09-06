@@ -17,8 +17,7 @@ const ShowPage = ({props, recipes}) => {
 
     console.log('CURRENT RECIPE!!!', currentRecipe)
     return (
-        currentRecipe ? 
-
+        currentRecipe ?
         <div className="container">
             <Collection key={currentRecipe.id} header={currentRecipe.recipeName}>
                 <CollectionItem><img src={currentRecipe.imageUrlsBySize[90]} /></CollectionItem>

@@ -38,23 +38,6 @@ function login(req, res) {
     }).catch(err => res.status(401).json(err));
 }
 
-// function update(req, res) {
-//   User.findById(req.user._id, function(err, user) {
-//       user.name = req.body.name;
-//       user.email = req.body.email;
-//       if (user.password && user.password === user.passwordConf) user.password = req.body.password;
-//       user.save().then(user => {
-//         res.json({token: createJWT(user)});
-//       }).catch(err => res.status(400).json(err));
-//     })
-// }
-
-function addGroceryItem(req, res) {
-  User.findById(req.user._id, function(err, user) {
-    user
-  });
-}
-
 function createJWT(user) {
     return jwt.sign(
       {user}, // data payload

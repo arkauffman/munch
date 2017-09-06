@@ -1,13 +1,9 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+var ObjectId = mongoose.Schema.Types.ObjectId;
+var Recipe = require('./recipe');
 
 const SALT_ROUNDS = 6;
-
-var grocerySchema = new mongoose.Schema({
-    groceryItem: String
-}, {
-    timestamps: true
-});
 
 var userSchema = new mongoose.Schema({
     name: String,
@@ -18,7 +14,10 @@ var userSchema = new mongoose.Schema({
         unique: true
     },
     password: String,
-    groceries: [grocerySchema]
+    recipes: [{
+        ref: 'Recipe',
+        type: ObjectId
+    }]
 }, {
     timestamps: true
 });
