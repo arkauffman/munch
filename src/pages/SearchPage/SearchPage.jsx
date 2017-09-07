@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 import {Icon, Collection, CollectionItem} from 'react-materialize';
 import './SearchPage.css';
 
-const SearchPage = ({handleFavorites, handleSearch, updateSearchValue, recipes}) => {
+const SearchPage = ({user, handleFavorites, handleSearch, updateSearchValue, recipes}) => {
     return (
-        recipes ? 
+        recipes && user ? 
         <div className="container">
             <Collection header='Recipes'>
                 
@@ -14,7 +14,6 @@ const SearchPage = ({handleFavorites, handleSearch, updateSearchValue, recipes})
                 </form>
 
                 {recipes.matches.map((recipe, index) => {
-                
                     let ingredients = recipe.ingredients;
                     let updatedIngredients = ingredients.join(', ');
                     
@@ -32,8 +31,7 @@ const SearchPage = ({handleFavorites, handleSearch, updateSearchValue, recipes})
                                     </Link>
                                     {recipe.recipeName} <br />
                                     {updatedIngredients} <br /><br />
-                                    {ratingArr}
-                                    <br /> <br />
+                                    {ratingArr}<br /><br />
                                     
                                     <button className="favorite" onClick={() => handleFavorites(recipe.id, recipe.recipeName, recipe.ingredients)}>
                                         <Icon tiny className="favorite">favorite_border</Icon>

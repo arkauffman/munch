@@ -14,6 +14,7 @@ function signup(req, res) {
 
 function update(req, res) {
   User.findById(req.user._id, function(err, user) {
+    // if (err) res.json({err: 'bad credentials'})
       console.log(req.body)
       user.name = req.body.name;
       user.email = req.body.email;

@@ -33,9 +33,11 @@ class SettingsForm extends Component {
 
     isFormInvalid() {
         if (this.state.name && this.state.email) {
-            if (this.state.password && this.state.passwordConf && (this.state.password === this.state.passwordConf)) {
+            if (this.state.password && (this.state.password === this.state.passwordConf)) {
                 return false;
-            } else if(!this.state.password && this.state.passwordConf) {
+            } else if (this.state.password) {
+                return true;
+            } else {
                 return false;
             }
         } else {

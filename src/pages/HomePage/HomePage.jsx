@@ -4,6 +4,8 @@ import {Icon, Collection, CollectionItem} from 'react-materialize';
 import './HomePage.css';
 
 const HomePage = ({handleFavorites, user}) => {
+
+
     return (
         user && user.recipes.length ? 
             <div className="container">
@@ -12,7 +14,10 @@ const HomePage = ({handleFavorites, user}) => {
 
                     {user.recipes.map((recipe, index) => {
                         let ingredients = recipe.recipeIngredients;
-                        let updatedIngredients = ingredients.join(', ')
+                        let updatedIngredients
+                        if (recipe.recipeIngredients) {
+                            updatedIngredients = ingredients.join(', ')
+                        }
 
                         return (
                             <div key={recipe.recipeId}>

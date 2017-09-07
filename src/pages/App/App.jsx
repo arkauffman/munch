@@ -37,6 +37,7 @@ class App extends Component {
 
   handleLogin = () => {
     this.setState({user: userService.getUser()});
+    this.handleUserPopulate();
   }
 
   handleUpdate = () => {
@@ -96,10 +97,7 @@ class App extends Component {
   }
   
   render() {
-    console.log('recipes: ', this.state.recipes)
-    console.log('favorites: ', this.state.favorites)
-    console.log('user', this.state.user);
-    
+    console.log('recipes', this.state.recipes)
     return (
       <div className="App">
         <Router>

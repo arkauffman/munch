@@ -18,6 +18,7 @@ const NavBar = (props) => {
     :
         <div>
             <nav>
+                <Link to='/' className='Left'><span role="img">🥖</span></Link>
                 <Link to='/' className='brand-logo center'>Munch</Link>
                 <Link to='/login' className='Right'>LOG IN</Link>
                 <Link to='/signup' className='Right'>SIGN UP&nbsp;&nbsp;|</Link>
