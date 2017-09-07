@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-// only have this in nav bar - call nav bar in app so it persists on every page
+import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,7 +21,8 @@ class App extends Component {
     this.state = {
       recipes: null,
       search: "",
-      favorites: null
+      favorites: null,
+      message: ''
     }
   }
 

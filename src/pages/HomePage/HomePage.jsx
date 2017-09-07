@@ -9,8 +9,6 @@ const HomePage = ({handleFavorites, user}) => {
             <div className="container">
                 <Collection header='Groceries'>
                     <p>🥖🥖🥖🥖🥖🥖🥖🥖🥖🥖</p>
-                    
-                     
 
                     {user.recipes.map((recipe, index) => {
                         let ingredients = recipe.recipeIngredients;
@@ -23,7 +21,7 @@ const HomePage = ({handleFavorites, user}) => {
                                     <Link to={`/search/${recipe.id}`}>{recipe.recipeName}</Link>
                                     
                                     <br /><br />{updatedIngredients} <br /><br />
-                                    <button onClick={() => handleFavorites(recipe.recipeId, recipe.recipeName, recipe.recipeIngredients)}>
+                                    <button className="favorite" onClick={() => handleFavorites(recipe.recipeId, recipe.recipeName, recipe.recipeIngredients)}>
                                         <Icon tiny className="favorite">favorite_border</Icon>
                                     </button>
                                     <br />

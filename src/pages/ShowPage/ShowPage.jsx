@@ -10,20 +10,24 @@ const ShowPage = ({props, recipes}) => {
     }
 
     let updatedIngredients = [];
+    let ratingArr = [];
     if (currentRecipe) {
         let ingredients = currentRecipe.ingredients;
         updatedIngredients = ingredients.join(', ')
+        ratingArr = new Array(currentRecipe.rating);
+        ratingArr.fill(<Icon tiny>star_border</Icon>); 
     }
 
-    console.log('CURRENT RECIPE!!!', currentRecipe)
     return (
         currentRecipe ?
         <div className="container">
             <Collection key={currentRecipe.id} header={currentRecipe.recipeName}>
-                <CollectionItem><img src={currentRecipe.imageUrlsBySize[90]} /></CollectionItem>
-                <CollectionItem>{updatedIngredients}</CollectionItem>
-                <CollectionItem>{currentRecipe.rating} stars</CollectionItem>
-                <CollectionItem>Source: {currentRecipe.sourceDisplayName}</CollectionItem>
+                <CollectionItem>
+                    <br /> <img src={currentRecipe.imageUrlsBySize[90]} /> <br />
+                    <br /> {updatedIngredients} <br />
+                    <br /> {ratingArr} <br /><br />
+                    Source: {currentRecipe.sourceDisplayName}
+                </CollectionItem>
             </Collection>
         </div>
         :

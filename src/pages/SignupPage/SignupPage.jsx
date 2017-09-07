@@ -14,7 +14,7 @@ class SignupPage extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div>
         <SignupForm 
             {...this.props} 
             handleSignup={this.props.handleSignup}

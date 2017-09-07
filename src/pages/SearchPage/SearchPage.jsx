@@ -4,61 +4,52 @@ import {Icon, Collection, CollectionItem} from 'react-materialize';
 import './SearchPage.css';
 
 const SearchPage = ({handleFavorites, handleSearch, updateSearchValue, recipes}) => {
-    if (recipes !== null) {
-        return (
-            recipes ? 
-            <div className="container">
-                <Collection header='Recipes'>
-                    
-                    <form onSubmit={(e) => handleSearch(e)}>
-                        <input type="search" placeholder="Search Recipes..." onChange={updateSearchValue} />
-                    </form>
+    return (
+        recipes ? 
+        <div className="container">
+            <Collection header='Recipes'>
+                
+                <form onSubmit={(e) => handleSearch(e)}>
+                    <input type="search" placeholder="Search Recipes..." onChange={updateSearchValue} />
+                </form>
 
-                    {recipes.matches.map((recipe, index) => {
+                {recipes.matches.map((recipe, index) => {
+                
+                    let ingredients = recipe.ingredients;
+                    let updatedIngredients = ingredients.join(', ')
                     
-                        let ingredients = recipe.ingredients;
-                        let updatedIngredients = ingredients.join(', ')
-                        
-                        {/* let rating = recipe.rating;
-                        let ratingArr = new Array(recipe.rating);
-                        ratingArr.fill(1); */}
-                        {/* console.log(ratingArr) */}
+                    let rating = recipe.rating;
+                    let ratingArr = new Array(recipe.rating);
+                    ratingArr.fill(<Icon tiny>star_border</Icon>); 
 
-                        return (
-                            <div key={recipe.id}>
-                                    <hr />
-                                    <br />
-                                    <CollectionItem>
-                                        <Link to={`/search/${recipe.id}`}>
-                                            <img src={recipe.imageUrlsBySize[90]} className="search-image" /><br />
-                                        </Link>
-                                        {recipe.recipeName} <br />
-                                        {updatedIngredients} <br /><br />
-                                        {recipe.rating} stars
-                                        <br /> <br />
+                    return (
+                        <div key={recipe.id}>
+                                <hr />
+                                <br />
+                                <CollectionItem>
+                                    <Link to={`/search/${recipe.id}`}>
+                                        <img src={recipe.imageUrlsBySize[90]} className="search-image" /><br />
+                                    </Link>
+                                    {recipe.recipeName} <br />
+                                    {updatedIngredients} <br /><br />
+                                    {ratingArr}
+                                    <br /> <br />
+                                    
+                                    <button className="favorite" onClick={() => handleFavorites(recipe.id, recipe.recipeName, recipe.ingredients)}>
+                                        <Icon tiny className="favorite">favorite_border</Icon>
+                                    </button>
                                         
-                                        <button onClick={() => handleFavorites(recipe.id, recipe.recipeName, recipe.ingredients)}>
-                                            <Icon tiny className="favorite">favorite_border</Icon>
-                                        </button>
-                                            
-                                    </CollectionItem> 
-                            </div>
-                        )
-                    })}
-                </Collection>   
-            </div>
-            :
-            <div className="container">
-                <p>Loading!</p>
-            </div>
-        )
-    } else {
-        return (
-            <div className="container">
-                <p>Loading!</p>
-            </div>
-        )
-    }
-};
+                                </CollectionItem> 
+                        </div>
+                    )
+                })}
+            </Collection>   
+        </div>
+        :
+        <div className="container">
+            <p>Loading!</p>
+        </div>
+    )
+}
 
 export default SearchPage;

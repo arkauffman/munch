@@ -14,9 +14,12 @@ function signup(req, res) {
 
 function update(req, res) {
   User.findById(req.user._id, function(err, user) {
+      console.log(req.body)
       user.name = req.body.name;
       user.email = req.body.email;
-      if (user.password && user.password === user.passwordConf) user.password = req.body.password;
+      if (req.body.password && req.body.password === req.body.passwordConf) {
+        user.password = req.body.password;
+      }
       user.save().then(user => {
         res.json({token: createJWT(user)});
       }).catch(err => res.status(400).json(err));

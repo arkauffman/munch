@@ -29,9 +29,17 @@ class SettingsForm extends Component {
         });
     }
 
-//     isFormInvalid() {
-//     return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
-//   }
+    isFormInvalid() {
+        if (this.state.name && this.state.email) {
+            if (this.state.password && this.state.passwordConf && (this.state.password === this.state.passwordConf)) {
+                return !true;
+            } else if(!this.state.password && this.state.passwordConf) {
+                return !true;
+            }
+        } else {
+            return !false;
+        }
+    }
 
     render() {
         console.log('user', userService.getUser())
@@ -63,7 +71,7 @@ class SettingsForm extends Component {
                             </div>
                             <div className="row">
                             <div className="col s12">
-                                <button className="btn btn-default">Update</button>&nbsp;&nbsp;
+                                <button className="btn btn-default" disabled={this.isFormInvalid()}>Update</button>&nbsp;&nbsp;
                             </div>
                             </div>
                         </form>
