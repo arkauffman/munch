@@ -30,10 +30,6 @@ class LoginForm extends Component {
       });
   }
 
-  isFormInvalid = () => {
-    
-  }
-
   render() {
     return (
       <div>
