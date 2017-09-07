@@ -16,11 +16,11 @@ const SearchPage = ({handleFavorites, handleSearch, updateSearchValue, recipes})
                 {recipes.matches.map((recipe, index) => {
                 
                     let ingredients = recipe.ingredients;
-                    let updatedIngredients = ingredients.join(', ')
+                    let updatedIngredients = ingredients.join(', ');
                     
                     let rating = recipe.rating;
                     let ratingArr = new Array(recipe.rating);
-                    ratingArr.fill(<Icon tiny>star_border</Icon>); 
+                    ratingArr.fill(<Icon>star_border</Icon>); 
 
                     return (
                         <div key={recipe.id}>

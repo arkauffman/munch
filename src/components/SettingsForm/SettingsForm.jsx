@@ -13,6 +13,13 @@ class SettingsForm extends Component {
         };
     }
 
+    handleChange = (field, e) => {
+        this.props.updateMessage('');
+        this.setState({
+            [field]: e.target.value
+        });
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         userService.update(this.state)
@@ -20,24 +27,19 @@ class SettingsForm extends Component {
             this.props.handleUpdate();
             this.props.history.push('/');
         })
-        .catch(err => alert('Error'));
+        .catch(err => this.props.updateMessage(err.message));
     }
 
-    handleChange = (field, e) => {
-        this.setState({
-            [field]: e.target.value
-        });
-    }
 
     isFormInvalid() {
         if (this.state.name && this.state.email) {
             if (this.state.password && this.state.passwordConf && (this.state.password === this.state.passwordConf)) {
-                return !true;
+                return false;
             } else if(!this.state.password && this.state.passwordConf) {
-                return !true;
+                return false;
             }
         } else {
-            return !false;
+            return true;
         }
     }
 

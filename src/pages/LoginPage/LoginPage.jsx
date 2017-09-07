@@ -4,11 +4,12 @@ import './LoginPage.css';
 
 const LoginPage = (props) => {
   return (
-    <div className='LoginPage'>
+    <div className="container">
         <LoginForm 
             {...props}
             handleLogin={props.handleLogin}
-        />       
+        />    
+        <p>{props.message}</p>   
     </div>
   );
 };

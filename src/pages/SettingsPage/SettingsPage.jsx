@@ -6,7 +6,11 @@ class SettingsPage extends Component {
     constructor(props) {
         super(props);
         this.state = {message: ''}
-        }
+    }
+
+    updateMessage = (msg) => {
+        this.setState({message: msg});
+    }
     
     render() {
         return (
@@ -16,6 +20,7 @@ class SettingsPage extends Component {
                     handleUpdate={this.props.handleUpdate}
                     updateMessage={this.updateMessage}
                 />
+                <p>{this.state.message}</p>
             </div>
         );
     }

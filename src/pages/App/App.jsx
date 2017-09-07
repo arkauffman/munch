@@ -134,6 +134,8 @@ class App extends Component {
               <Route exact path='/login' render={(props) => 
                 <LoginPage
                   {...props}
+                  message={this.state.message}
+                  updateMessage={this.updateMessage}
                   handleLogin={this.handleLogin}
                 />
               }/>

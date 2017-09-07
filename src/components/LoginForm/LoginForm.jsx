@@ -20,18 +20,23 @@ class LoginForm extends Component {
           this.props.history.push('/');
       })
       // change this
-      .catch(err => alert('Error!'));
+      .catch(err => this.props.updateMessage(err.message));
   }
 
   handleChange = (field, e) => {
+      this.props.updateMessage('')
       this.setState({
           [field]: e.target.value
       });
   }
 
+  isFormInvalid = () => {
+    
+  }
+
   render() {
     return (
-      <div className="container">
+      <div>
         <header className="header-footer">Log In</header>
         <div className="row">
           <form onSubmit={this.handleSubmit} >
