@@ -6,7 +6,7 @@ const HomePage = ({handleFavorites, user, recipes}) => {
     return (
         user && user.recipes.length && recipes ? 
             <div className="container">
-                <Collection header='Groceries'>
+                <Collection header='Grocery List'>
                     <br />
                     <span role="img" aria-label="Bread">🥖🥖🥖🥖🥖🥖🥖🥖🥖🥖</span>
 
