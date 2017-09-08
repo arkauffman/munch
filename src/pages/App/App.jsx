@@ -55,12 +55,7 @@ class App extends Component {
 
   handleSearch = (e) => {
     if (e) e.preventDefault();
-    let matchCount = 10;
-    if (this.state.recipes) {
-      console.log('match count!!!', this.state.recipes.totalMatchCount);
-      matchCount = this.state.recipes.totalMatchCount;
-    }
-    fetch(`/api/recipes?food=${this.state.search}&maxResult=${matchCount}`, {
+    fetch(`/api/recipes?food=${this.state.search}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
     }).then(res => res.json())
