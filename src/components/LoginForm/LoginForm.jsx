@@ -13,15 +13,13 @@ class LoginForm extends Component {
   }
 
   handleSubmit = (e) => {
-      console.log('I\'m hit')
-      e.preventDefault();
-      userService.login(this.state)
-      .then(() => {
-          this.props.handleLogin();
-          this.props.history.push('/');
-      })
-      // change this
-      .catch(err => this.props.updateMessage(err.message));
+    e.preventDefault();
+    userService.login(this.state)
+    .then(() => {
+        this.props.handleLogin();
+        this.props.history.push('/');
+    })
+    .catch(err => this.props.updateMessage(err.message));
   }
 
   handleChange = (field, e) => {
@@ -33,7 +31,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <header className="header-footer">Log In</header>
         <div className="row">
           <form onSubmit={this.handleSubmit} >

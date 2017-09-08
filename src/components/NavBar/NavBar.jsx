@@ -7,7 +7,7 @@ const NavBar = (props) => {
     let nav = props.user ? 
         <div>
             <nav>
-                <Link to='/' className='Left'><span role="img">🥖</span></Link>
+                <Link to='/' className='Left'><span role="img" aria-label="Bread">🥖</span></Link>
                 <Link to='/' className='brand-logo center'>Munchin'</Link>
                 <Link to='/logout' className='Right' onClick={props.handleLogout}><Icon tiny>exit_to_app</Icon></Link>
                 <Link to='/settings' className='Right'><Icon tiny>settings</Icon></Link>

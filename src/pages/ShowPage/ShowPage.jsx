@@ -1,6 +1,5 @@
 import React from 'react';
 import {Icon, Collection, CollectionItem} from 'react-materialize';
-import './ShowPage.css';
 
 const ShowPage = ({props, recipes}) => {
     if (recipes !== null) {
@@ -23,7 +22,7 @@ const ShowPage = ({props, recipes}) => {
         <div className="container">
             <Collection key={currentRecipe.id} header={currentRecipe.recipeName}>
                 <CollectionItem>
-                    <br /> <img src={currentRecipe.imageUrlsBySize[90]} /> <br />
+                    <br /> <img src={currentRecipe.imageUrlsBySize[90]} alt="Recipe" /> <br />
                     <br /> {updatedIngredients} <br />
                     <br /> {ratingArr} <br /><br />
                     Source: {currentRecipe.sourceDisplayName}

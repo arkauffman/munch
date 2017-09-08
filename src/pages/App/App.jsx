@@ -42,6 +42,7 @@ class App extends Component {
 
   handleUpdate = () => {
     this.setState({user: userService.getUser()});
+    this.handleUserPopulate();
   }
 
   updateSearchValue = (e) => {
@@ -54,7 +55,12 @@ class App extends Component {
 
   handleSearch = (e) => {
     if (e) e.preventDefault();
-    fetch(`/api/recipes?food=${this.state.search}`, {
+    let matchCount = 10;
+    if (this.state.recipes) {
+      console.log('match count!!!', this.state.recipes.totalMatchCount);
+      matchCount = this.state.recipes.totalMatchCount;
+    }
+    fetch(`/api/recipes?food=${this.state.search}&maxResult=${matchCount}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
     }).then(res => res.json())
@@ -97,7 +103,6 @@ class App extends Component {
   }
   
   render() {
-    console.log('recipes', this.state.recipes)
     return (
       <div className="App">
         <Router>
@@ -141,6 +146,7 @@ class App extends Component {
                 <HomePage 
                   user={this.state.user}
                   handleFavorites={this.handleFavorites}
+                  recipes={this.state.recipes}
                 />
               }/>
               <Route path='/search/:id' render={(props) => 
@@ -153,7 +159,6 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-
       </div>
     );
   }

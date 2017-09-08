@@ -14,7 +14,7 @@ class SettingsPage extends Component {
     
     render() {
         return (
-            <div className="SettingsPage">
+            <div>
                 <SettingsForm
                     {...this.props}
                     handleUpdate={this.props.handleUpdate}

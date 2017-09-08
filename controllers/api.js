@@ -3,7 +3,7 @@ const URL = `http://api.yummly.com/v1/api/recipes?_app_id=${process.env.X_Yummly
 
 function getRecipes(req, res) {
     request(URL + req.query.food, (err, response, body) => {
-        if (err) return console.log(err);
+        if (err) return res.send(err);
         let recipes = body;
         res.send(recipes);
     });

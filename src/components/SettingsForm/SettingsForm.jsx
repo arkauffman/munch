@@ -30,7 +30,6 @@ class SettingsForm extends Component {
         .catch(err => this.props.updateMessage(err.message));
     }
 
-
     isFormInvalid() {
         if (this.state.name && this.state.email) {
             if (this.state.password && (this.state.password === this.state.passwordConf)) {
@@ -46,7 +45,6 @@ class SettingsForm extends Component {
     }
 
     render() {
-        console.log('user', userService.getUser())
         let settings = userService.getUser() ? 
         <div className="container">
             <div className="row">

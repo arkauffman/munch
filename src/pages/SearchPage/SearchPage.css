@@ -28,8 +28,3 @@ button.favorite {
     background-color: transparent !important;
     border: none !important;
 }
-
-input[type=search]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 1px solid #F4A360 !important;
-    box-shadow: 0 1px 0 0 #F4A360 !important;
-}

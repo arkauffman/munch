@@ -15,5 +15,4 @@ function checkAuth(req, res, next) {
     return res.status(401).json({msg: 'not authenticated'});
 }
 
-
 module.exports = router;

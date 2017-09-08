@@ -1,16 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Icon, Collection, CollectionItem} from 'react-materialize';
-import './HomePage.css';
 
-const HomePage = ({handleFavorites, user}) => {
-
-
+const HomePage = ({handleFavorites, user, recipes}) => {
     return (
-        user && user.recipes.length ? 
+        user && user.recipes.length && recipes ? 
             <div className="container">
                 <Collection header='Groceries'>
-                    <p>🥖🥖🥖🥖🥖🥖🥖🥖🥖🥖</p>
+                    <br />
+                    <span role="img" aria-label="Bread">🥖🥖🥖🥖🥖🥖🥖🥖🥖🥖</span>
 
                     {user.recipes.map((recipe, index) => {
                         let ingredients = recipe.recipeIngredients;
@@ -21,7 +19,7 @@ const HomePage = ({handleFavorites, user}) => {
 
                         return (
                             <div key={recipe.recipeId}>
-                                <hr />
+                                <br /><hr />
                                 <CollectionItem>
                                     <Link to={`/search/${recipe.id}`}>{recipe.recipeName}</Link>
                                     

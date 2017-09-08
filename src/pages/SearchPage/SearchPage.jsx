@@ -8,7 +8,7 @@ const SearchPage = ({user, handleFavorites, handleSearch, updateSearchValue, rec
         recipes && user ? 
         <div className="container">
             <Collection header='Recipes'>
-                
+                <br />
                 <form onSubmit={(e) => handleSearch(e)}>
                     <input type="search" placeholder="Search Recipes..." onChange={updateSearchValue} />
                 </form>
@@ -17,27 +17,26 @@ const SearchPage = ({user, handleFavorites, handleSearch, updateSearchValue, rec
                     let ingredients = recipe.ingredients;
                     let updatedIngredients = ingredients.join(', ');
                     
-                    let rating = recipe.rating;
                     let ratingArr = new Array(recipe.rating);
                     ratingArr.fill(<Icon>star_border</Icon>); 
 
                     return (
                         <div key={recipe.id}>
-                                <hr />
-                                <br />
-                                <CollectionItem>
-                                    <Link to={`/search/${recipe.id}`}>
-                                        <img src={recipe.imageUrlsBySize[90]} className="search-image" /><br />
-                                    </Link>
-                                    {recipe.recipeName} <br />
-                                    {updatedIngredients} <br /><br />
-                                    {ratingArr}<br /><br />
+                            <hr />
+                            <br />
+                            <CollectionItem>
+                                <Link to={`/search/${recipe.id}`}>
+                                    <img src={recipe.imageUrlsBySize[90]} className="search-image" alt="Recipe"/><br />
+                                </Link>
+                                {recipe.recipeName} <br />
+                                {updatedIngredients} <br /><br />
+                                {ratingArr}<br /><br />
+                                
+                                <button className="favorite" onClick={() => handleFavorites(recipe.id, recipe.recipeName, recipe.ingredients)}>
+                                    <Icon tiny className="favorite">favorite_border</Icon>
+                                </button>
                                     
-                                    <button className="favorite" onClick={() => handleFavorites(recipe.id, recipe.recipeName, recipe.ingredients)}>
-                                        <Icon tiny className="favorite">favorite_border</Icon>
-                                    </button>
-                                        
-                                </CollectionItem> 
+                            </CollectionItem> 
                         </div>
                     )
                 })}
