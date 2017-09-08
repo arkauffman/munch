@@ -9,9 +9,9 @@ Don't know what to cook this week?! With Munchin', you can search through recipe
 
 * <img src="https://js.devexpress.com/Content/Images/features/html5-css-javascript-logos.png" width="100" height="50">
 
-* <img src=" https://cdn-images-1.medium.com/max/1200/1*-ty7aZqH2of-rXpWYaoKPQ.png" width="100" height="50">
+* <img src="https://i.imgur.com/oO0hfsV.png" width="100" height="50">
 
-* <img src=" https://i.pinimg.com/originals/9a/86/59/9a86598cbbb0d691940725545a2eb505.jpg" width="100" height="50">
+* <img src=" https://i.imgur.com/tKWHMfS.png" width="100" height="50">
 
 * <img src="https://raw.githubusercontent.com/MakeSchool-Tutorials/Node-Rotten-Potatoes/9b2a283d20a594a4fc3ad48c7d81e263e818b7e2//cover.jpg" width="100" height="50">
 
