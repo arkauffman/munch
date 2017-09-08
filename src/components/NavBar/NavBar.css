@@ -1,6 +1,6 @@
 nav {
-    background-color: white !important;
-    color: black;
+    background: linear-gradient(120deg, #F7AC1B 0%, #fda085 100%) !important;
+    color: white;
     padding-bottom: 10px;
     height: 85px;
 }
@@ -18,15 +18,24 @@ a {
 
 .Left {
     float: left;
-    font-size: 40px;
+    font-size: 15px;
     padding-left: 15px;
+    padding-top: 10px;
+    color: white !important;
 }
 
-i {
-    color: #f4a460 !important;
+.loaf {
+    font-size: 30px;
+}
+
+.icon {
+    color: white !important;
 }
 
 .brand-logo.center {
+    letter-spacing: -0.05em;
+    font-weight: 800;
+    color: white !important;
     font-size: 50px !important;
     padding: 10px;
 }

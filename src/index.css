@@ -5,7 +5,7 @@ html {
 body {
   margin: 0 auto;
   padding: 0;
-  font-family: 'Tillana', cursive;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .footer {
@@ -41,4 +41,12 @@ input[type=password]:not(.browser-default):focus:not([readonly]) {
 
 .container {
   padding: 80px;
+}
+
+.collection {
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
+}
+
+i {
+  color: gold;
 }

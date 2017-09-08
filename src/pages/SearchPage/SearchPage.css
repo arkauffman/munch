@@ -12,6 +12,7 @@ input {
 
 .favorite {
     color: red !important;
+    font-size: 3rem !important;
 }
 
 .search-image {
