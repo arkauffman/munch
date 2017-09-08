@@ -3,6 +3,8 @@
 ## Introduction
 Don't know what to cook this week?! With Munchin', you can search through recipes and favorite/unfavorite those you wish to add to your grocery list. That way when you go to the grocery store, you'll know exactly what to buy! Search through hundreds of thousands of recipes provided through Yummly's API.
 
+<img src="https://i.imgur.com/Lk8YgYp.png" width="400" height="200">
+
 
 ## Technologies
 * <img src="https://s3-us-west-2.amazonaws.com/cdn.selvinortiz.com/blog/vs-code.jpg?mtime=20170313000515" width="100" height="50">
