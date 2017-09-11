@@ -14,6 +14,7 @@ a {
 
 .Right {
     float: right;
+    color: white !important
 }
 
 .Left {
