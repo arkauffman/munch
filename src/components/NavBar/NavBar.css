@@ -11,6 +11,10 @@ a {
     size: 10px;
 }
 
+nav a {
+    color: white !important;
+}
+
 .Right {
     float: right;
     color: white !important
