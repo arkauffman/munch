@@ -6,14 +6,10 @@ nav {
 }
 
 a {
+    color: white !important;
     padding-top: 15px;
     padding-right: 15px;
     size: 10px;
-    color: white !important;
-}
-
-nav a {
-    color: white !important;
 }
 
 .Right {
