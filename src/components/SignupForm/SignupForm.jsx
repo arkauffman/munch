@@ -66,7 +66,7 @@ class SignupForm extends Component {
             <div className="row">
               <div className="col s12">
                 <button className="btn btn-default" disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-                <Link to='/'>Cancel</Link>
+                <Link to='/' className="Cancel">Cancel</Link>
               </div>
             </div>
           </form>

@@ -3,5 +3,6 @@ header {
 }
 
 .Cancel {
-    align-content: center !important; 
+    align-content: center !important;
+    color: black !important; 
 }

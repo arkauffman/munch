@@ -47,7 +47,7 @@ class LoginForm extends Component {
             </div>
             <div className="row">
               <div className="col s12">
-                <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
+                <button className="btn btn-default login">Log In</button>&nbsp;&nbsp;&nbsp;
                 <Link to='/' className="Cancel">Cancel</Link>
               </div>
             </div>

@@ -72,9 +72,9 @@ class SettingsForm extends Component {
                             </div>
                             </div>
                             <div className="row">
-                            <div className="col s12">
-                                <button className="btn btn-default" disabled={this.isFormInvalid()}>Update</button>&nbsp;&nbsp;
-                            </div>
+                                <div className="col s12">
+                                    <button className="btn btn-default" disabled={this.isFormInvalid()}>Update</button>&nbsp;&nbsp;
+                                </div>
                             </div>
                         </form>
                     </div>
